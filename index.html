@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HBT Computers & Phones — Baldivis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1510505449990918185/1518191906679427102/New_Project_17.png?ex=6a3905e5&is=6a37b465&hm=f306a70a385044ab2ed7ad2edde3f7a6e6011f9eece5e7f91e141196c0c8ceba&=&format=webp&quality=lossless">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dark:#0E1E5C;
+  --dark2:#123E78;
+  --dark3:#15637E;
+  --accent:#2BE0CE;
+  --accent2:#7BF3E4;
+  --white:#F2F6F8;
+  --muted:rgba(242,246,248,0.55);
+  --border:rgba(255,255,255,0.14);
+  --brand-gradient:linear-gradient(180deg,#0E1E5C 0%,#10254F 35%,#122E45 65%,#13352F 100%);
+}
+body{background:var(--brand-gradient) fixed}
+html{scroll-behavior:smooth}
+body{color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s,backdrop-filter 0.4s}
+nav.scrolled{background:rgba(12,14,18,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:38px;height:38px;border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;color:var(--accent);letter-spacing:0.5px}
+.nav-logo-img{height:34px;width:auto;display:block}
+.nav-logo-text{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;color:var(--white)}
+.nav-links{display:flex;gap:2.5rem}
+.nav-links a{font-size:13px;font-weight:400;color:var(--muted);letter-spacing:0.06em;text-decoration:none;transition:color 0.2s;text-transform:uppercase}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--dark);background:var(--accent);padding:10px 22px;border-radius:100px;text-decoration:none;letter-spacing:0.03em;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.85}
+
+.hero{height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-noise{position:absolute;inset:0;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")}
+.hero-content{position:relative;z-index:2;padding:0 3rem;max-width:1100px;margin:0 auto;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;opacity:0;transform:translateY(20px);animation:fadeUp 0.8s 0.2s forwards}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--accent)}
+.hero-h1{font-family:'Archivo Black',sans-serif;font-size:clamp(2.8rem,7vw,5.8rem);font-weight:400;line-height:1.02;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:2rem;opacity:0;transform:translateY(30px);animation:fadeUp 0.9s 0.35s forwards}
+.hero-h1 em{font-style:normal;color:var(--accent);-webkit-text-stroke:1px var(--accent2)}
+.hero-sub{font-size:16px;color:var(--muted);max-width:420px;line-height:1.7;margin-bottom:2.5rem;font-weight:300;opacity:0;transform:translateY(20px);animation:fadeUp 0.8s 0.5s forwards}
+.hero-actions{display:flex;gap:14px;align-items:center;opacity:0;transform:translateY(20px);animation:fadeUp 0.8s 0.65s forwards}
+.btn-gold{background:var(--accent);color:var(--dark);padding:14px 30px;border-radius:100px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform 0.2s,box-shadow 0.2s}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(31,212,196,0.3)}
+.btn-ghost{color:var(--muted);font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;letter-spacing:0.05em;transition:color 0.2s}
+.btn-ghost:hover{color:var(--white)}
+.btn-ghost::after{content:'→';transition:transform 0.2s}
+.btn-ghost:hover::after{transform:translateX(4px)}
+.hero-stats{position:absolute;right:3rem;bottom:4rem;display:flex;flex-direction:column;gap:2rem;opacity:0;animation:fadeIn 1s 0.9s forwards}
+.hero-stat{text-align:right}
+.hero-stat-num{font-family:'Archivo Black',sans-serif;font-size:2.5rem;font-weight:700;color:var(--white);line-height:1}
+.hero-stat-label{font-size:11px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 1.2s forwards}
+.scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--accent));animation:scrollPulse 2s infinite}
+.scroll-text{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
+
+.ticker{background:var(--accent);padding:14px 0;overflow:hidden;position:relative}
+.ticker-inner{display:flex;gap:0;white-space:nowrap;animation:ticker 30s linear infinite}
+.ticker-item{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--dark);padding:0 2.5rem;letter-spacing:0.05em;display:flex;align-items:center;gap:10px}
+.ticker-dot{width:5px;height:5px;background:var(--dark);border-radius:50%;opacity:0.4}
+
+section{padding:7rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:10px}
+.section-eyebrow::before{content:'';width:24px;height:1px;background:var(--accent)}
+.section-title{font-family:'Archivo Black',sans-serif;font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:400;line-height:1.15;text-transform:uppercase;margin-bottom:1rem}
+.section-title em{font-style:normal;color:var(--accent)}
+.section-sub{color:var(--muted);font-size:15px;line-height:1.75;font-weight:300;max-width:480px}
+
+.services{background:transparent}
+.services-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:0}
+.services-left{position:sticky;top:8rem}
+.services-right{display:flex;flex-direction:column;gap:1px;margin-top:4rem}
+.service-row{border-top:1px solid var(--border);padding:2rem 0;display:flex;align-items:flex-start;gap:1.5rem;transition:all 0.3s;cursor:default}
+.service-row:last-child{border-bottom:1px solid var(--border)}
+.service-row:hover{padding-left:1rem}
+.service-num{font-family:'Archivo Black',sans-serif;font-size:1.5rem;color:var(--accent);opacity:0.4;line-height:1;min-width:40px}
+.service-info h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;margin-bottom:0.4rem;transition:color 0.2s}
+.service-row:hover .service-info h3{color:var(--accent)}
+.service-info p{font-size:13px;color:var(--muted);line-height:1.65}
+.service-tag{display:inline-block;margin-top:0.6rem;font-size:11px;color:var(--accent);border:1px solid rgba(31,212,196,0.3);padding:3px 10px;border-radius:100px;letter-spacing:0.05em}
+
+.tilt-section{background:transparent}
+.tilt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.tilt-card{background:rgba(255,255,255,0.07);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:transform 0.1s ease,box-shadow 0.3s;transform-style:preserve-3d;will-change:transform;position:relative;overflow:hidden}
+.tilt-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(31,212,196,0.06) 0%,transparent 70%);opacity:0;transition:opacity 0.3s}
+.tilt-card:hover::before{opacity:1}
+.tilt-card:hover{box-shadow:0 24px 60px rgba(0,0,0,0.4),0 0 0 1px rgba(31,212,196,0.15)}
+.tilt-card h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;margin-bottom:0.5rem}
+.tilt-card p{font-size:13px;color:var(--muted);line-height:1.7}
+
+.about-section{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}
+.about-parallax-bg{position:absolute;inset:-20%;background:transparent;will-change:transform}
+.about-parallax-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(31,212,196,0.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.about-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;width:100%;max-width:1100px;margin:0 auto;padding:0 3rem}
+.about-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:20px;padding:2.5rem;backdrop-filter:blur(8px)}
+.about-big-num{font-family:'Archivo Black',sans-serif;font-size:5rem;font-weight:900;color:var(--accent);line-height:1}
+.about-big-label{font-size:13px;color:var(--muted);margin-top:4px;margin-bottom:2rem;letter-spacing:0.08em;text-transform:uppercase}
+.about-divider{width:100%;height:1px;background:var(--border);margin:1.5rem 0}
+.about-detail{display:flex;justify-content:space-between;align-items:center}
+.about-detail-label{font-size:12px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase}
+.about-detail-val{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600}
+.about-points{margin-top:2rem;display:flex;flex-direction:column;gap:1.25rem}
+.about-point{display:flex;gap:14px;align-items:flex-start}
+.about-point-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--accent),transparent);flex-shrink:0;margin-top:4px}
+.about-point h4{font-size:14px;font-weight:600;margin-bottom:3px;font-family:'Space Grotesk',sans-serif}
+.about-point p{font-size:13px;color:var(--muted);line-height:1.6}
+
+.reviews-section{background:transparent}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:4rem}
+.review-card{background:rgba(255,255,255,0.07);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:border-color 0.3s}
+.review-card:hover{border-color:rgba(31,212,196,0.3)}
+.review-stars{color:var(--accent);font-size:14px;letter-spacing:2px;margin-bottom:1rem}
+.review-text{font-size:14px;color:rgba(245,243,238,0.7);line-height:1.75;font-weight:300;margin-bottom:1.5rem;font-style:italic}
+.reviewer{display:flex;align-items:center;gap:10px}
+.reviewer-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),rgba(31,212,196,0.3));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--dark)}
+.reviewer-name{font-size:13px;font-weight:600;font-family:'Space Grotesk',sans-serif}
+.reviewer-meta{font-size:11px;color:var(--muted)}
+
+.contact-section{background:transparent}
+.contact-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;margin-top:4rem;align-items:start}
+.contact-items{display:flex;flex-direction:column;gap:2rem}
+.contact-item{display:flex;gap:1.25rem;align-items:flex-start}
+.contact-item-icon{width:44px;height:44px;border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.contact-item h4{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.contact-item p,.contact-item a{font-size:15px;color:var(--white);text-decoration:none;line-height:1.6}
+.contact-item a:hover{color:var(--accent)}
+.pay-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:2rem}
+.pay-pill{border:1px solid var(--border);border-radius:100px;padding:7px 16px;font-size:12px;color:var(--muted);letter-spacing:0.05em}
+.contact-form-wrap{background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:20px;padding:2.5rem}
+.form-title{font-family:'Archivo Black',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:0.5rem}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:2rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.fg label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+.fg input,.fg select,.fg textarea{background:rgba(0,0,0,0.25);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--white);font-family:'Inter',sans-serif;outline:none;transition:border-color 0.2s;width:100%}
+.fg input:focus,.fg select,.fg textarea:focus{border-color:rgba(31,212,196,0.4)}
+.fg select option{background:#123E78}
+.fg textarea{resize:vertical;min-height:100px}
+.form-btn{width:100%;background:var(--accent);color:var(--dark);border:none;border-radius:100px;padding:14px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;cursor:pointer;letter-spacing:0.05em;transition:opacity 0.2s,transform 0.2s;margin-top:4px}
+.form-btn:hover{opacity:0.9;transform:translateY(-1px)}
+
+footer{background:rgba(0,0,0,0.2);border-top:1px solid var(--border);padding:4rem 3rem 2rem}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3rem}
+.footer-brand-logo{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.footer-brand p{font-size:13px;color:var(--muted);line-height:1.7;max-width:280px;margin-top:0.75rem}
+.footer-col h4{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col ul li a{font-size:13px;color:rgba(245,243,238,0.5);text-decoration:none;transition:color 0.2s}
+.footer-col ul li a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:12px;color:rgba(245,243,238,0.25)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes scrollPulse{0%,100%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+@media(max-width:768px){
+  .hero-content{max-width:100%}
+  .hero-stats{position:static;flex-wrap:wrap;margin-top:3rem;animation:none;opacity:1}
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  section{padding:5rem 1.5rem}
+  .hero-content{padding:0 1.5rem}
+  .hero-stats{display:none}
+  .services-layout,.about-inner,.contact-layout,.footer-top{grid-template-columns:1fr;gap:3rem}
+  .services-left{position:static}
+  .tilt-grid,.reviews-grid{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+  .about-section{min-height:auto;padding:5rem 0}
+}
+</style>
+</head>
+<body>
+
+
+<nav id="nav">
+  <div class="nav-logo">
+    <img src="https://media.discordapp.net/attachments/1510505449990918185/1518190021033590814/download_1.png?ex=6a390423&is=6a37b2a3&hm=13b67a0add5cb9996a97b7bd32353467b293dcabea79ab75fa0e9e61ace01d7c&=&format=webp&quality=lossless" alt="HBT Computers & Phones" class="nav-logo-img">
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="tel:0895925601" class="nav-cta">(08) 9592 5601</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-circuit"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Baldivis, Western Australia · Est. 10+ years</div>
+    <h1 class="hero-h1">Your local<br><em>tech experts.</em><br>Done right.</h1>
+    <p class="hero-sub">Phone repairs, laptop fixes, PS5 servicing, custom PC builds, fast turnaround with a 12-month warranty on everything.</p>
+    <div class="hero-actions">
+      <a href="tel:0895925601" class="btn-gold">Call now</a>
+      <a href="#services" class="btn-ghost">See all services</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">4.7★</div><div class="hero-stat-label">Google rating</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">158+</div><div class="hero-stat-label">Reviews</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">12mo</div><div class="hero-stat-label">Warranty</div></div>
+  </div>
+  <div class="hero-scroll">
+    <span class="scroll-text">Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item">Phone Repairs <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Laptop Servicing <span class="ticker-dot"></span></span>
+    <span class="ticker-item">PS5 Repairs <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Custom PC Builds <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Afterpay Available <span class="ticker-dot"></span></span>
+    <span class="ticker-item">12-Month Warranty <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Phone Repairs <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Laptop Servicing <span class="ticker-dot"></span></span>
+    <span class="ticker-item">PS5 Repairs <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Custom PC Builds <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Afterpay Available <span class="ticker-dot"></span></span>
+    <span class="ticker-item">12-Month Warranty <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-layout">
+      <div class="services-left reveal">
+        <div class="section-eyebrow">What we do</div>
+        <h2 class="section-title">Every device.<br><em>Every repair.</em></h2>
+        <p class="section-sub" style="margin-top:1rem">We fix it all phones, laptops, PCs, PS5s, tablets. Walk in or call ahead. Afterpay & Zip Pay on everything.</p>
+        <div style="margin-top:2.5rem">
+          <a href="tel:0895925601" class="btn-gold">Book a repair</a>
+        </div>
+      </div>
+      <div class="services-right">
+        <div class="service-row reveal">
+          <div class="service-num">01</div>
+          <div class="service-info">
+            <h3>Phone repairs</h3>
+            <p>Cracked screens, batteries, charging ports, water damage, all major brands fixed fast.</p>
+            <span class="service-tag">Same-day available</span>
+          </div>
+        </div>
+        <div class="service-row reveal reveal-delay-1">
+          <div class="service-num">02</div>
+          <div class="service-info">
+            <h3>Laptop repairs</h3>
+            <p>Screen replacements, keyboard fixes, overheating, SSD upgrades, OS reinstalls.</p>
+            <span class="service-tag">All brands</span>
+          </div>
+        </div>
+        <div class="service-row reveal reveal-delay-2">
+          <div class="service-num">03</div>
+          <div class="service-info">
+            <h3>PC repairs & builds</h3>
+            <p>Custom builds, virus removal, data recovery, upgrades and general computer servicing.</p>
+            <span class="service-tag">Custom builds</span>
+          </div>
+        </div>
+        <div class="service-row reveal reveal-delay-3">
+          <div class="service-num">04</div>
+          <div class="service-info">
+            <h3>PS5 & console repairs</h3>
+            <p>Disc drive, HDMI ports, overheating, controller repairs and more.</p>
+            <span class="service-tag">Gaming specialist</span>
+          </div>
+        </div>
+        <div class="service-row reveal reveal-delay-4">
+          <div class="service-num">05</div>
+          <div class="service-info">
+            <h3>Graphics cards & parts</h3>
+            <p>GPU sales, thermal paste, fan repairs, component sourcing for builds and upgrades.</p>
+            <span class="service-tag">In-store stock</span>
+          </div>
+        </div>
+        <div class="service-row reveal">
+          <div class="service-num">06</div>
+          <div class="service-info">
+            <h3>Tablets & iPads</h3>
+            <p>Screen repairs, battery replacements, software issues for all tablets.</p>
+            <span class="service-tag">All tablets</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TILT CARDS / PRODUCTS -->
+<section class="tilt-section" id="products">
+  <div class="container">
+    <div class="section-eyebrow reveal">In-store products</div>
+    <h2 class="section-title reveal">Tech you can<br><em>buy today.</em></h2>
+    <div class="tilt-grid">
+      <div class="tilt-card reveal" data-tilt>
+        <h3>Graphics Cards</h3>
+        <p>NVIDIA & AMD GPUs for gaming rigs and workstation builds. Ask us about current stock.</p>
+      </div>
+      <div class="tilt-card reveal reveal-delay-1" data-tilt>
+        <h3>Desktop PCs</h3>
+        <p>Pre-built desktops and custom-configured systems tailored to your budget.</p>
+      </div>
+      <div class="tilt-card reveal reveal-delay-2" data-tilt>
+        <h3>Laptops</h3>
+        <p>Refurbished and new laptops for work, study, and gaming — all tested and warrantied.</p>
+      </div>
+      <div class="tilt-card reveal reveal-delay-3" data-tilt>
+        <h3>Accessories & Parts</h3>
+        <p>Cables, cases, batteries, screens, RAM, SSDs and computer components in stock.</p>
+      </div>
+      <div class="tilt-card reveal reveal-delay-4" data-tilt>
+        <h3>Peripherals</h3>
+        <p>Keyboards, mice, monitors and other peripherals. Pop in and see what's available.</p>
+      </div>
+      <div class="tilt-card reveal" data-tilt style="background:linear-gradient(135deg,rgba(31,212,196,0.1),rgba(31,212,196,0.03));border-color:rgba(31,212,196,0.2)">
+        <h3>Afterpay & Zip Pay</h3>
+        <p>Buy now, pay later on everything in store. No interest, no fuss.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-section" id="about">
+  <div class="about-parallax-bg" id="aboutBg"></div>
+  <div class="about-parallax-glow"></div>
+  <div class="about-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">About us</div>
+      <h2 class="section-title">Baldivis's<br><em>trusted shop</em><br>since day one.</h2>
+      <p class="section-sub" style="margin-top:1rem">HBT Computers & Phones has been the go-to for Baldivis and surrounding suburbs for over a decade. Locally owned, locally operated — we treat every device and every customer with real care.</p>
+      <div class="about-points">
+        <div class="about-point">
+          <div class="about-point-line"></div>
+          <div>
+            <h4>Precision repairs, every time</h4>
+            <p>Our technicians take the time to do the job properly. No shortcuts.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-line"></div>
+          <div>
+            <h4>12-month warranty on all repairs</h4>
+            <p>We stand behind every repair with a full 12-month warranty.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-line"></div>
+          <div>
+            <h4>Friendly, no-BS service</h4>
+            <p>We explain what's wrong, what it'll cost, and how long it'll take. Simple.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-card reveal reveal-delay-2">
+      <div class="about-big-num">4.7</div>
+      <div class="about-big-label">Google Rating</div>
+      <div style="color:var(--accent);font-size:1.3rem;letter-spacing:3px;margin-bottom:1.5rem">★★★★★</div>
+      <div class="about-divider"></div>
+      <div class="about-detail"><span class="about-detail-label">Reviews</span><span class="about-detail-val">158+</span></div>
+      <div class="about-divider"></div>
+      <div class="about-detail"><span class="about-detail-label">Years open</span><span class="about-detail-val">10+</span></div>
+      <div class="about-divider"></div>
+      <div class="about-detail"><span class="about-detail-label">Warranty</span><span class="about-detail-val">12 months</span></div>
+      <div class="about-divider"></div>
+      <div style="margin-top:1.5rem">
+        <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Find us</div>
+        <div style="font-size:13px;line-height:1.6">Shop 5, 83 Norseman Approach<br>Baldivis WA 6171<br><span style="color:var(--muted);font-size:12px">(next to Squirters Car Wash)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="section-eyebrow reveal">Customer reviews</div>
+    <h2 class="section-title reveal">What people<br><em>are saying.</em></h2>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"A massive thanks to Zak and Josh. Every time I've come in for anything computers they've gone above and beyond, and shown the respect to listen and do what is needed."</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">MD</div>
+          <div><div class="reviewer-name">Michael Dawson</div><div class="reviewer-meta">Local Guide · 4 months ago</div></div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"What a lovely young fellow, so friendly, knowledgeable and professional. Highly recommend this company."</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">SR</div>
+          <div><div class="reviewer-name">Sue Reiger</div><div class="reviewer-meta">3 months ago</div></div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Excellent service, very efficient and professional. They did a fantastic job replacing my computer screen for an extremely reasonable price."</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">EM</div>
+          <div><div class="reviewer-name">Elkanah Masih</div><div class="reviewer-meta">Local Guide · 4 weeks ago</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem">
+      <a href="https://g.co/kgs/hbt" target="_blank" class="btn-ghost">Read all 158 reviews on Google</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-eyebrow reveal">Get in touch</div>
+    <h2 class="section-title reveal">Come say<br><em>g'day in person.</em></h2>
+    <div class="contact-layout">
+      <div class="contact-items reveal">
+        <div class="contact-item">
+          <div>
+            <h4>Address</h4>
+            <p>Shop 5, 83 Norseman Approach<br>Baldivis WA 6171<br><span style="font-size:12px;color:var(--muted)">next to Squirters Car Wash</span></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div>
+            <h4>Phone</h4>
+            <a href="tel:0895925601">(08) 9592 5601</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div>
+            <h4>Hours</h4>
+            <p>Mon–Fri: 8:30am – 5:30pm<br>Sat: 9:00am – 3:00pm<br>Sun: Closed</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div>
+            <h4>Social</h4>
+            <a href="https://www.facebook.com/HBTComputers" target="_blank">Facebook</a> &nbsp;·&nbsp; <a href="#">Instagram</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Payment options</div>
+          <div class="pay-row">
+            <span class="pay-pill">Afterpay</span>
+            <span class="pay-pill">Zip Pay</span>
+            <span class="pay-pill">Cash</span>
+            <span class="pay-pill">Card</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal reveal-delay-2" style="padding:0;overflow:hidden">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3128.5!2d115.8176077!3d-32.3320575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a328504486bf5b1%3A0x28314ec3c46001ce!2sHBT%20Computers%20%26%20Phones!5e0!3m2!1sen!2sau!4v1"
+          width="100%" height="420" style="border:0;display:block" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div style="padding:1.5rem 1.75rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px">Shop 5, 83 Norseman Approach</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">Baldivis WA 6171 · next to Squirters Car Wash</div>
+          </div>
+          <a href="https://www.google.com/maps/place/HBT+Computers+%26+Phones/@-32.3320575,115.8176077,17z" target="_blank" class="btn-ghost" style="white-space:nowrap">Get directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">
+          <img src="https://media.discordapp.net/attachments/1510505449990918185/1518190021033590814/download_1.png?ex=6a390423&is=6a37b2a3&hm=13b67a0add5cb9996a97b7bd32353467b293dcabea79ab75fa0e9e61ace01d7c&=&format=webp&quality=lossless" alt="HBT Computers & Phones" class="nav-logo-img">
+        </div>
+        <p>Your one-stop tech shop in Baldivis. Repairs, builds, and everything in between. Done right the first time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Phone repairs</a></li>
+          <li><a href="#services">Laptop repairs</a></li>
+          <li><a href="#services">PC repairs & builds</a></li>
+          <li><a href="#services">PS5 repairs</a></li>
+          <li><a href="#services">Tablet & iPad repairs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://www.facebook.com/HBTComputers" target="_blank">Facebook</a></li>
+          <li><a href="tel:0895925601">(08) 9592 5601</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 HBT Computers & Phones · Shop 5, 83 Norseman Approach, Baldivis WA 6171</span>
+      <span class="footer-copy">hbtcomputers.com.au</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>60);
+});
+
+// Parallax hero
+const heroBg = document.getElementById('heroBg');
+const aboutBg = document.getElementById('aboutBg');
+window.addEventListener('scroll',()=>{
+  const y = window.scrollY;
+  if(heroBg) heroBg.style.transform=`translateY(${y*0.35}px)`;
+  if(aboutBg){
+    const rect = aboutBg.parentElement.getBoundingClientRect();
+    aboutBg.style.transform=`translateY(${-rect.top*0.2}px)`;
+  }
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0.12});
+reveals.forEach(el=>observer.observe(el));
+
+// Tilt cards
+document.querySelectorAll('[data-tilt]').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width;
+    const y=(e.clientY-r.top)/r.height;
+    const tiltX=(y-0.5)*14;
+    const tiltY=(x-0.5)*-14;
+    card.style.transform=`perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.02)`;
+    card.style.setProperty('--mx',x*100+'%');
+    card.style.setProperty('--my',y*100+'%');
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='perspective(600px) rotateX(0) rotateY(0) scale(1)';
+  });
+});
+
+// Smooth scroll nav
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+</script>
+</body>
+</html>
