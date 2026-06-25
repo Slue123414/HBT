@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HBT Computers & Phones — Baldivis</title>
+<link rel="icon" type="image/png" href="/New_Project_17.png">
+<link rel="shortcut icon" type="image/png" href="/New_Project_17.png">
+<link rel="apple-touch-icon" href="/New_Project_17.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="New_Project_17.png">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -18,12 +20,13 @@
   --white:#F2F6F8;
   --muted:rgba(242,246,248,0.55);
   --border:rgba(255,255,255,0.14);
-  --brand-gradient:linear-gradient(180deg,#0E1E5C 0%,#10254F 35%,#122E45 65%,#13352F 100%);
+  --brand-gradient:linear-gradient(180deg,#0E1E5C 0%,#123E78 22%,#1A5780 45%,#1F7188 65%,#1C8E92 82%,#1FA89A 100%);
 }
 body{background:var(--brand-gradient) fixed}
 html{scroll-behavior:smooth}
 body{color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden}
 
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s,backdrop-filter 0.4s}
 nav.scrolled{background:rgba(12,14,18,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 .nav-logo{display:flex;align-items:center;gap:10px}
@@ -36,6 +39,7 @@ nav.scrolled{background:rgba(12,14,18,0.85);backdrop-filter:blur(16px);border-bo
 .nav-cta{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--dark);background:var(--accent);padding:10px 22px;border-radius:100px;text-decoration:none;letter-spacing:0.03em;transition:opacity 0.2s}
 .nav-cta:hover{opacity:0.85}
 
+/* HERO */
 .hero{height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
 .hero-noise{position:absolute;inset:0;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")}
 .hero-content{position:relative;z-index:2;padding:0 3rem;max-width:1100px;margin:0 auto;width:100%}
@@ -59,11 +63,13 @@ nav.scrolled{background:rgba(12,14,18,0.85);backdrop-filter:blur(16px);border-bo
 .scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--accent));animation:scrollPulse 2s infinite}
 .scroll-text{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
 
+/* TICKER */
 .ticker{background:var(--accent);padding:14px 0;overflow:hidden;position:relative}
 .ticker-inner{display:flex;gap:0;white-space:nowrap;animation:ticker 30s linear infinite}
 .ticker-item{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--dark);padding:0 2.5rem;letter-spacing:0.05em;display:flex;align-items:center;gap:10px}
 .ticker-dot{width:5px;height:5px;background:var(--dark);border-radius:50%;opacity:0.4}
 
+/* SECTIONS */
 section{padding:7rem 3rem}
 .container{max-width:1100px;margin:0 auto}
 .section-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:10px}
@@ -72,7 +78,8 @@ section{padding:7rem 3rem}
 .section-title em{font-style:normal;color:var(--accent)}
 .section-sub{color:var(--muted);font-size:15px;line-height:1.75;font-weight:300;max-width:480px}
 
-.services{background:transparent}
+/* SERVICES */
+.services{background:rgba(0,0,0,0.08)}
 .services-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:0}
 .services-left{position:sticky;top:8rem}
 .services-right{display:flex;flex-direction:column;gap:1px;margin-top:4rem}
@@ -85,7 +92,8 @@ section{padding:7rem 3rem}
 .service-info p{font-size:13px;color:var(--muted);line-height:1.65}
 .service-tag{display:inline-block;margin-top:0.6rem;font-size:11px;color:var(--accent);border:1px solid rgba(31,212,196,0.3);padding:3px 10px;border-radius:100px;letter-spacing:0.05em}
 
-.tilt-section{background:transparent}
+/* TILT CARDS */
+.tilt-section{background:rgba(0,0,0,0.12)}
 .tilt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
 .tilt-card{background:rgba(255,255,255,0.07);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:transform 0.1s ease,box-shadow 0.3s;transform-style:preserve-3d;will-change:transform;position:relative;overflow:hidden}
 .tilt-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(31,212,196,0.06) 0%,transparent 70%);opacity:0;transition:opacity 0.3s}
@@ -93,9 +101,12 @@ section{padding:7rem 3rem}
 .tilt-card:hover{box-shadow:0 24px 60px rgba(0,0,0,0.4),0 0 0 1px rgba(31,212,196,0.15)}
 .tilt-card h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;margin-bottom:0.5rem}
 .tilt-card p{font-size:13px;color:var(--muted);line-height:1.7}
+.tilt-arrow{position:absolute;top:1.5rem;right:1.5rem;width:28px;height:28px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted);transition:all 0.2s}
+.tilt-card:hover .tilt-arrow{background:var(--accent);border-color:var(--accent);color:var(--dark)}
 
+/* PARALLAX ABOUT */
 .about-section{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}
-.about-parallax-bg{position:absolute;inset:-20%;background:transparent;will-change:transform}
+.about-parallax-bg{position:absolute;inset:-20%;background:linear-gradient(135deg,var(--dark2) 0%,var(--dark3) 100%);will-change:transform}
 .about-parallax-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(31,212,196,0.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
 .about-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;width:100%;max-width:1100px;margin:0 auto;padding:0 3rem}
 .about-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:20px;padding:2.5rem;backdrop-filter:blur(8px)}
@@ -111,7 +122,8 @@ section{padding:7rem 3rem}
 .about-point h4{font-size:14px;font-weight:600;margin-bottom:3px;font-family:'Space Grotesk',sans-serif}
 .about-point p{font-size:13px;color:var(--muted);line-height:1.6}
 
-.reviews-section{background:transparent}
+/* REVIEWS */
+.reviews-section{background:rgba(0,0,0,0.08)}
 .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:4rem}
 .review-card{background:rgba(255,255,255,0.07);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:border-color 0.3s}
 .review-card:hover{border-color:rgba(31,212,196,0.3)}
@@ -122,7 +134,8 @@ section{padding:7rem 3rem}
 .reviewer-name{font-size:13px;font-weight:600;font-family:'Space Grotesk',sans-serif}
 .reviewer-meta{font-size:11px;color:var(--muted)}
 
-.contact-section{background:transparent}
+/* CONTACT */
+.contact-section{background:rgba(0,0,0,0.12)}
 .contact-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;margin-top:4rem;align-items:start}
 .contact-items{display:flex;flex-direction:column;gap:2rem}
 .contact-item{display:flex;gap:1.25rem;align-items:flex-start}
@@ -145,6 +158,7 @@ section{padding:7rem 3rem}
 .form-btn{width:100%;background:var(--accent);color:var(--dark);border:none;border-radius:100px;padding:14px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;cursor:pointer;letter-spacing:0.05em;transition:opacity 0.2s,transform 0.2s;margin-top:4px}
 .form-btn:hover{opacity:0.9;transform:translateY(-1px)}
 
+/* FOOTER */
 footer{background:rgba(0,0,0,0.2);border-top:1px solid var(--border);padding:4rem 3rem 2rem}
 .footer-inner{max-width:1100px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3rem}
@@ -157,6 +171,7 @@ footer{background:rgba(0,0,0,0.2);border-top:1px solid var(--border);padding:4re
 .footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center}
 .footer-copy{font-size:12px;color:rgba(245,243,238,0.25)}
 
+/* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:0.1s}
@@ -164,6 +179,7 @@ footer{background:rgba(0,0,0,0.2);border-top:1px solid var(--border);padding:4re
 .reveal-delay-3{transition-delay:0.3s}
 .reveal-delay-4{transition-delay:0.4s}
 
+/* ANIMATIONS */
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{to{opacity:1}}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -190,7 +206,7 @@ footer{background:rgba(0,0,0,0.2);border-top:1px solid var(--border);padding:4re
 
 <nav id="nav">
   <div class="nav-logo">
-<img src="/New_Project_17.png" alt="HBT Computers & Phones" class="nav-logo-img">
+    <img src="/download_1.png" alt="HBT Computers & Phones" class="nav-logo-img">
   </div>
   <div class="nav-links">
     <a href="#services">Services</a>
@@ -319,26 +335,32 @@ footer{background:rgba(0,0,0,0.2);border-top:1px solid var(--border);padding:4re
     <h2 class="section-title reveal">Tech you can<br><em>buy today.</em></h2>
     <div class="tilt-grid">
       <div class="tilt-card reveal" data-tilt>
+        <div class="tilt-arrow">↗</div>
         <h3>Graphics Cards</h3>
         <p>NVIDIA & AMD GPUs for gaming rigs and workstation builds. Ask us about current stock.</p>
       </div>
       <div class="tilt-card reveal reveal-delay-1" data-tilt>
+        <div class="tilt-arrow">↗</div>
         <h3>Desktop PCs</h3>
         <p>Pre-built desktops and custom-configured systems tailored to your budget.</p>
       </div>
       <div class="tilt-card reveal reveal-delay-2" data-tilt>
+        <div class="tilt-arrow">↗</div>
         <h3>Laptops</h3>
         <p>Refurbished and new laptops for work, study, and gaming — all tested and warrantied.</p>
       </div>
       <div class="tilt-card reveal reveal-delay-3" data-tilt>
+        <div class="tilt-arrow">↗</div>
         <h3>Accessories & Parts</h3>
         <p>Cables, cases, batteries, screens, RAM, SSDs and computer components in stock.</p>
       </div>
       <div class="tilt-card reveal reveal-delay-4" data-tilt>
+        <div class="tilt-arrow">↗</div>
         <h3>Peripherals</h3>
         <p>Keyboards, mice, monitors and other peripherals. Pop in and see what's available.</p>
       </div>
       <div class="tilt-card reveal" data-tilt style="background:linear-gradient(135deg,rgba(31,212,196,0.1),rgba(31,212,196,0.03));border-color:rgba(31,212,196,0.2)">
+        <div class="tilt-arrow" style="border-color:rgba(31,212,196,0.3);color:var(--accent)">↗</div>
         <h3>Afterpay & Zip Pay</h3>
         <p>Buy now, pay later on everything in store. No interest, no fuss.</p>
       </div>
@@ -499,7 +521,7 @@ footer{background:rgba(0,0,0,0.2);border-top:1px solid var(--border);padding:4re
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-brand-logo">
-         <img src="/New_Project_17.png" alt="HBT Computers & Phones" class="nav-logo-img">
+          <img src="/download_1.png" alt="HBT Computers & Phones" class="nav-logo-img">
         </div>
         <p>Your one-stop tech shop in Baldivis. Repairs, builds, and everything in between. Done right the first time.</p>
       </div>
